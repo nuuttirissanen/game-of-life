@@ -31,7 +31,7 @@ public class Main extends Application {
             BorderPane root = new BorderPane();
             GridPane grid = new GridPane();
             VBox box = new VBox(10);
-            grid.setGridLinesVisible(true);
+
 
 
             Rectangle[][] neliot = new Rectangle[100][100];
@@ -95,9 +95,15 @@ public class Main extends Application {
 
             nopeus.setOnMouseClicked(e -> nopeusTeksti.setText("Nopeus: " + new DecimalFormat("0.00").format(nopeus.getValue()) + " "));
 
-            Timeline animaatio = new Timeline(new KeyFrame(Duration.millis(500 / nopeus.getValue()), tk));
+
+            Timeline animaatio = new Timeline(new KeyFrame(Duration.millis(200), tk));
             animaatio.setCycleCount(Animation.INDEFINITE);
             animaatio.play();
+
+            nopeus.valueProperty().addListener(observable -> {
+                animaatio.setRate(nopeus.getValue());
+            });
+
 
             Scene scene = new Scene(root, 1200, 1300);
             scene.setFill(Color.GREY);
