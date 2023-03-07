@@ -30,7 +30,7 @@ public class GoLMethods extends Rectangle {
         for (int i = xMin; i <= xMax; i++) {
             for (int j = yMin; j <= yMax; j++) {
                 if (i == x && j == y) {
-                    continue; // skip the center cell
+                    continue; 
                 }
                 if (Objects.equals(taulu[i][j].getFill().toString(), musta)) {
                     naapurit++;
